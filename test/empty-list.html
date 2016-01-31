@@ -2,15 +2,22 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>isempty tests</title>
+  <title>empty-list tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <script src="../../webcomponentsjs/webcomponents.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
-  <link href="../isempty.html" rel="import">
+  <link href="../empty-list.html" rel="import">
 </head>
 <body>
-	
+	<template is="dom-bind" id="testapp">
+    <template is="dom-repeat" items="{{entries}}">
+        <div><span>{{item}}</span></div>
+    </template>
+  </template>
   <script>
+  var testapp = document.getElementById('testapp');
+  testapp.entries = [1,2,3,4];
+
   test('description', function() {
     assert.equal(1,1);
   });
