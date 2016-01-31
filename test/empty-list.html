@@ -13,13 +13,26 @@
     <template is="dom-repeat" items="{{entries}}">
         <div><span>{{item}}</span></div>
     </template>
+    <empty-list id="default" items="{{entries}}">
+      i may be visible if list is empty
+    </empty-list>
   </template>
   <script>
   var testapp = document.getElementById('testapp');
-  testapp.entries = [1,2,3,4];
-
-  test('description', function() {
-    assert.equal(1,1);
+  var placeholder = document.getElementById('default');
+  test('not empty list', function() {
+    testapp.entries = [1,2,3,4];
+    assert.equal(true,placeholder.hidden);
+  });
+  test('empty list', function() {
+    testapp.entries = [];
+    assert.equal(false,placeholder.hidden);
+  });
+  test('modified list', function() {
+    testapp.entries = [];
+    assert.equal(false,placeholder.hidden);
+    testapp.entries.push(1);
+    assert.equal(true,placeholder.hidden);
   });
   </script>
 </body>
