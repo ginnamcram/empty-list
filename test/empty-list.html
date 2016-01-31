@@ -18,22 +18,31 @@
     </empty-list>
   </template>
   <script>
-  var testapp = document.getElementById('testapp');
-  var placeholder = document.getElementById('default');
-  test('not empty list', function() {
-    testapp.entries = [1,2,3,4];
-    assert.equal(true,placeholder.hidden);
-  });
-  test('empty list', function() {
-    testapp.entries = [];
-    assert.equal(false,placeholder.hidden);
-  });
-  test('modified list', function() {
-    testapp.entries = [];
-    assert.equal(false,placeholder.hidden);
-    testapp.entries.push(1);
-    assert.equal(true,placeholder.hidden);
-  });
+  (function(){
+    'use strict';
+    var testapp = document.getElementById('testapp');
+
+    test('not empty list', function() {
+      var placeholder = document.getElementById('default');
+      testapp.entries = [1,2,3,4];
+      assert.equal(true,placeholder.hidden);
+    });
+    test('empty list', function() {
+      var placeholder = document.getElementById('default');
+      testapp.entries = [];
+      assert.equal(false,placeholder.hidden);
+    });
+    test('modified list', function() {
+      var placeholder = document.getElementById('default');
+      testapp.entries = [];
+      assert.equal(false,placeholder.hidden);
+      testapp.push('entries','1');
+      assert.equal(true,placeholder.hidden);
+    });
+    
+  })()
+
+  
   </script>
 </body>
 </html>

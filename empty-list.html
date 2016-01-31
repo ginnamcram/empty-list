@@ -14,18 +14,35 @@
     </div>
   </template>
   <script>
-    Polymer({
-      is: 'empty-list',
-      properties:{
-        hidden : {
-          type    : Boolean,
-          notify  : true,
-          value   : false
-        }
-      }
-      ready: function(){
+    (function(){
+      'use strict';
 
-      }
-    });
+      Polymer({
+        is: 'empty-list',
+        properties:{
+          hidden : {
+            type    : Boolean,
+            notify  : true,
+            value   : false
+          },
+          items : {
+            type    : Array,
+            notify  : true
+          }
+        },
+        observers: [
+          '_itemsAddedOrRemoved(items.splices)'
+        ],
+        ready: function(){
+          this.hidden = !this.isEmpty();
+        },
+        isEmpty: function(){
+          return this.items == null || this.items.length < 1;
+        },
+        _itemsAddedOrRemoved:function(changeRecord){
+          this.hidden = !this.isEmpty();
+        }
+      });
+    })()
   </script>
 </dom-module>
