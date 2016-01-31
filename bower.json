@@ -1,0 +1,11 @@
+{
+  "name": "isempty",
+  "private": true,
+  "version": "1.0",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^1.0.0"
+  }
+}
