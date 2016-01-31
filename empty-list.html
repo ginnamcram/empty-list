@@ -31,16 +31,13 @@
           }
         },
         observers: [
-          '_itemsAddedOrRemoved(items.splices)'
+          '_checkItems(items.splices)'
         ],
         ready: function(){
-          this.hidden = !this.isEmpty();
+          this._checkItems();
         },
-        isEmpty: function(){
-          return this.items == null || this.items.length < 1;
-        },
-        _itemsAddedOrRemoved:function(changeRecord){
-          this.hidden = !this.isEmpty();
+        _checkItems:function(){
+          this.hidden = this.items != null && this.items.length > 0;
         }
       });
     })()
