@@ -5,13 +5,27 @@
       :host {
         display: block;
       }
+      [hidden]{
+        display: none;
+      }
     </style>
-    <content></content>
+    <div hidden="{{hidden}}">
+      <content></content>
+    </div>
   </template>
   <script>
     Polymer({
       is: 'empty-list',
-      ready: function() {}
+      properties:{
+        hidden : {
+          type    : Boolean,
+          notify  : true,
+          value   : false
+        }
+      }
+      ready: function(){
+
+      }
     });
   </script>
 </dom-module>
